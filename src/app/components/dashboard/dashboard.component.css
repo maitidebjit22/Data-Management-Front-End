@@ -54,7 +54,15 @@ h1 {
       margin-bottom: 20px;
     }
   }
-  
+    th
+  {
+ font-weight: bold;
+  }
+td
+{
+font-size: 11px;
+}
+
 
 
  
