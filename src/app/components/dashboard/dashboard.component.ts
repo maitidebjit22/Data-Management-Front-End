@@ -1,230 +1,229 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImportUserComponent } from '../../import-user/import-user.component';
 import { MatDialog } from "@angular/material/dialog";
 import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 export interface PeriodicElement {
- serial: String;
-  hugo_Symbol: String;
-  entrez_Gene_Id: String;
-  center: String;
-  nCBI_Build: String;
-  chromosome: String;
-  start_Position: String;
-  end_Position: String;
-  strand: String;
-  variant_Classification: String;
-  variant_Type: String;
-  reference_Allele: String;
-  tumor_Seq_Allele1: String;
-  tumor_Seq_Allele2: String;
-  dbSNP_RS: String;
-  dbSNP_Val_Status: String;
-  tumor_Sample_Barcode: String;
-  matched_Norm_Sample_Barcode: String;
-  match_Norm_Seq_Allele1: String;
-  match_Norm_Seq_Allele2: String;
-  tumor_Validation_Allele1: String;
-  tumor_Validation_Allele2: String;
-  match_Norm_Validation_Allele1: String;
-  match_Norm_Validation_Allele2: String;
-  verification_Status: String;
-  validation_Status: String;
-  mutation_Status: String;
-  sequencing_Phase: String;
-  sequence_Source: String;
-  validation_Method: String;
-  score: String;
-  bAM_File: String;
-  sequencer: String;
-  tumor_Sample_UUID: String;
-  matched_Norm_Sample_UUID: String;
-  genome_Change: String;
-  annotation_Transcript: String;
-  transcript_Strand: String;
-  transcript_Exon: String;
-  transcript_Position: String;
-  cDNA_Change: String;
-  codon_Change: String;
-  protein_Change: String;
-  other_Transcripts: String;
-  refseq_mRNA_Id: String;
-  refseq_prot_Id: String;
-  swissProt_acc_Id: String;
-  swissProt_entry_Id: String;
-  description: String;
-  uniProt_AApos: String;
-  uniProt_Region: String;
-  uniProt_Site: String;
-  uniProt_Natural_Variations: String;
-  uniProt_Experimental_Info: String;
-  gO_Biological_Process: String;
-  gO_Cellular_Component: String;
-  gO_Molecular_Function: String;
-  cOSMIC_overlapping_mutations: String;
-  cOSMIC_fusion_genes: String;
-  cOSMIC_tissue_types_affected: String;
-  cOSMIC_total_alterations_in_gene: String;
-  tumorscape_Amplification_Peaks: String;
-  tumorscape_Deletion_Peaks: String;
-  tCGAscape_Amplification_Peaks: String;
-  tCGAscape_Deletion_Peaks: String;
-  drugBank: String;
-  ref_context: String;
-  gc_content: String;
-  cCLE_ONCOMAP_overlapping_mutations: String;
-  cCLE_ONCOMAP_total_mutations_in_gene: String;
-  cGC_Mutation_Type: String;
-  cGC_Translocation_Partner: String;
-  cGC_Tumor_Types_Somatic: String;
-  cGC_Tumor_Types_Germline: String;
-  cGC_Other_Diseases: String;
-  dNARepairGenes_Activity_linked_to_OMIM: String;
-  familialCancerDatabase_Syndromes: String;
-  mUTSIG_Published_Results: String;
-  oREGANNO_ID: String;
-  oREGANNO_Values: String;
-  tumor_f: String;
-  t_alt_count: String;
-  t_ref_count: String;
-  n_alt_count: String;
-  n_ref_count: String;
-  gencode_43_secondaryVariantClassification: String;
-  achilles_Top_Genes: String;
-  clinVar_VCF_AF_ESP: String;
-  clinVar_VCF_AF_EXAC: String;
-  clinVar_VCF_AF_TGP: String;
-  clinVar_VCF_ALLELEID: String;
-  clinVar_VCF_CLNDISDB: String;
-  clinVar_VCF_CLNDISDBINCL: String;
-  clinVar_VCF_CLNDNL: String;
-  clinVar_VCF_CLNDNINCL: String;
-  clinVar_VCF_CLNHGVS: String;
-  clinVar_VCF_CLNREVSTAT: String;
-  clinVar_VCF_CLNSIG: String;
-  clinVar_VCF_CLNSIGCONF: String;
-  clinVar_VCF_CLNSIGINCL: String;
-  clinVar_VCF_CLNVC: String;
-  clinVar_VCF_CLNVCSO: String;
-  clinVar_VCF_CLNVI: String;
-  clinVar_VCF_DBVARID: String;
-  clinVar_VCF_GENEINFO: String;
-  clinVar_VCF_MC: String;
-  clinVar_VCF_ORIGIN: String;
-  clinVar_VCF_RS: String;
-  clinVar_VCF_ID: String;
-  clinVar_VCF_FILTER: String;
-  cosmicFusion_fusion_id: String;
-  familial_Cancer_Genes_Synonym: String;
-  familial_Cancer_Genes_Reference: String;
-  gencode_XHGNC_hgnc_id: String;
-  hGNC_HGNC_ID: String;
-  hGNC_Approved_name: String;
-  hGNC_Status: String;
-  hGNC_Locus_type: String;
-  hGNC_Locus_group: String;
-  hGNC_Previous_symbols: String;
-  hGNC_Previous_name: String;
-  hGNC_Alias_symbols: String;
-  hGNC_Alias_names: String;
-  hGNC_Chromosome: String;
-  hGNC_Date_modified: String;
-  hGNC_Date_symbol_changed: String;
-  hGNC_Date_name_changed: String;
-  hGNC_Accession_numbers: String;
-  hGNC_Enzyme_IDs: String;
-  hGNC_NCBI_Gene_ID: String;
-  hGNC_Ensembl_gene_ID: String;
-  hGNC_Pubmed_IDs: String;
-  hGNC_RefSeq_IDs: String;
-  hGNC_Gene_group_ID: String;
-  hGNC_Gene_group_name: String;
-  hGNC_CCDS_IDs: String;
-  hGNC_Vega_IDs: String;
-  hGNC_NCBI_Gene_ID_supplied_by_NCBI: String;
-  hGNC_OMIM_ID_supplied_by_OMIM: String;
-  hGNC_RefSeq_supplied_by_NCBI: String;
-  hGNC_UniProt_ID_supplied_by_UniProt: String;
-  hGNC_Ensembl_ID_supplied_by_Ensembl: String;
-  hGNC_UCSC_ID_supplied_by_UCSC: String;
-  oreganno_Build: String;
-  simple_Uniprot_alt_uniprot_accessions: String;
-  dbSNP_ASP: String;
-  dbSNP_ASS: String;
-  dbSNP_CAF: String;
-  dbSNP_CDA: String;
-  dbSNP_CFL: String;
-  dbSNP_COMMON: String;
-  dbSNP_DSS: String;
-  dbSNP_G5: String;
-  dbSNP_G5A: String;
-  dbSNP_GENEINFO: String;
-  dbSNP_GNO: String;
-  dbSNP_HD: String;
-  dbSNP_INT: String;
-  dbSNP_KGPhase1: String;
-  dbSNP_KGPhase3: String;
-  dbSNP_LSD: String;
-  dbSNP_MTP: String;
-  dbSNP_MUT: String;
-  dbSNP_NOC: String;
-  dbSNP_NOV: String;
-  dbSNP_NSF: String;
-  dbSNP_NSM: String;
-  dbSNP_NSN: String;
-  dbSNP_OM: String;
-  dbSNP_OTH: String;
-  dbSNP_PM: String;
-  dbSNP_PMC: String;
-  dbSNP_R3: String;
-  dbSNP_R5: String;
-  dbSNP_REF: String;
-  dbSNP_RV: String;
-  dbSNP_S3D: String;
-  dbSNP_SAO: String;
-  dbSNP_SLO: String;
-  dbSNP_SSR: String;
-  dbSNP_SYN: String;
-  dbSNP_TOPMED: String;
-  dbSNP_TPA: String;
-  dbSNP_U3: String;
-  dbSNP_U5: String;
-  dbSNP_VC: String;
-  dbSNP_VP: String;
-  dbSNP_WGT: String;
-  dbSNP_WTD: String;
-  dbSNP_dbSNPBuildID: String;
-  dbSNP_ID: String;
-  dbSNP_FILTER: String;
-  dbSNP_RSPOS: String;
-  dbSNP_VLD: String;
-  aS_FilterStatus: String;
-  aS_SB_TABLE: String;
-  aS_UNIQ_ALT_READ_COUNT: String;
-  cONTQ: String;
-  dP: String;
-  eCNT: String;
-  gERMQ: String;
-  mBQ: String;
-  mFRL: String;
-  mMQ: String;
-  mPOS: String;
-  nALOD: String;
-  nCount: String;
-  nLOD: String;
-  oCM: String;
-  pON: String;
-  pOPAF: String;
-  rOQ: String;
-  rPA: String;
-  rU: String;
-  sEQQ: String;
-  sTR: String;
-  sTRANDQ: String;
-  sTRQ: String;
-  tLOD: String;
- 
+  Serial: { type: String },
+  Hugo_Symbol: { type: String },
+  Entrez_Gene_Id: { type: String },
+  Center: { type: String },
+  NCBI_Build: { type: String },
+  Chromosome: { type: String },
+  Start_Position: { type: String },
+  End_Position: { type: String },
+  Strand: { type: String },
+  Variant_Classification: { type: String },
+  Variant_Type: { type: String },
+  Reference_Allele: { type: String },
+  Tumor_Seq_Allele1: { type: String },
+  Tumor_Seq_Allele2: { type: String },
+  dbSNP_RS: { type: String },
+  dbSNP_Val_Status: { type: String },
+  Tumor_Sample_Barcode: { type: String },
+  Matched_Norm_Sample_Barcode: { type: String },
+  Match_Norm_Seq_Allele1: { type: String },
+  Match_Norm_Seq_Allele2: { type: String },
+  Tumor_Validation_Allele1: { type: String },
+  Tumor_Validation_Allele2: { type: String },
+  Match_Norm_Validation_Allele1: { type: String },
+  Match_Norm_Validation_Allele2: { type: String },
+  Verification_Status: { type: String },
+  Validation_Status: { type: String },
+  Mutation_Status: { type: String },
+  Sequencing_Phase: { type: String },
+  Sequence_Source: { type: String },
+  Validation_Method: { type: String },
+  Score: { type: String },
+  BAM_File: { type: String },
+  Sequencer: { type: String },
+  Tumor_Sample_UUID: { type: String },
+  Matched_Norm_Sample_UUID: { type: String },
+  Genome_Change: { type: String },
+  Annotation_Transcript: { type: String },
+  Transcript_Strand: { type: String },
+  Transcript_Exon: { type: String },
+  Transcript_Position: { type: String },
+  cDNA_Change: { type: String },
+  Codon_Change: { type: String },
+  Protein_Change: { type: String },
+  Other_Transcripts: { type: String },
+  Refseq_mRNA_Id: { type: String },
+  Refseq_prot_Id: { type: String },
+  SwissProt_acc_Id: { type: String },
+  SwissProt_entry_Id: { type: String },
+  Description: { type: String },
+  UniProt_AApos: { type: String },
+  UniProt_Region: { type: String },
+  UniProt_Site: { type: String },
+  UniProt_Natural_Variations: { type: String },
+  UniProt_Experimental_Info: { type: String },
+  GO_Biological_Process: { type: String },
+  GO_Cellular_Component: { type: String },
+  GO_Molecular_Function: { type: String },
+  COSMIC_overlapping_mutations: { type: String },
+  COSMIC_fusion_genes: { type: String },
+  COSMIC_tissue_types_affected: { type: String },
+  COSMIC_total_alterations_in_gene: { type: String },
+  Tumorscape_Amplification_Peaks: { type: String },
+  Tumorscape_Deletion_Peaks: { type: String },
+  TCGAscape_Amplification_Peaks: { type: String },
+  TCGAscape_Deletion_Peaks: { type: String },
+  DrugBank: { type: String },
+  ref_context: { type: String },
+  gc_content: { type: String },
+  CCLE_ONCOMAP_overlapping_mutations: { type: String },
+  CCLE_ONCOMAP_total_mutations_in_gene: { type: String },
+  CGC_Mutation_Type: { type: String },
+  CGC_Translocation_Partner: { type: String },
+  CGC_Tumor_Types_Somatic: { type: String },
+  CGC_Tumor_Types_Germline: { type: String },
+  CGC_Other_Diseases: { type: String },
+  DNARepairGenes_Activity_linked_to_OMIM: { type: String },
+  FamilialCancerDatabase_Syndromes: { type: String },
+  MUTSIG_Published_Results: { type: String },
+  OREGANNO_ID: { type: String },
+  OREGANNO_Values: { type: String },
+  tumor_f: { type: String },
+  t_alt_count: { type: String },
+  t_ref_count: { type: String },
+  n_alt_count: { type: String },
+  n_ref_count: { type: String },
+  Gencode_43_secondaryVariantClassification: { type: String },
+  Achilles_Top_Genes: { type: String },
+  ClinVar_VCF_AF_ESP: { type: String },
+  ClinVar_VCF_AF_EXAC: { type: String },
+  ClinVar_VCF_AF_TGP: { type: String },
+  ClinVar_VCF_ALLELEID: { type: String },
+  ClinVar_VCF_CLNDISDB: { type: String },
+  ClinVar_VCF_CLNDISDBINCL: { type: String },
+  ClinVar_VCF_CLNDN: { type: String },
+  ClinVar_VCF_CLNDNINCL: { type: String },
+  ClinVar_VCF_CLNHGVS: { type: String },
+  ClinVar_VCF_CLNREVSTAT:{  type: String},
+  ClinVar_VCF_CLNSIG:{  type: String},
+  ClinVar_VCF_CLNSIGCONF:{  type: String},
+  ClinVar_VCF_CLNSIGINCL:{  type: String},
+  ClinVar_VCF_CLNVC:{  type: String},
+  ClinVar_VCF_CLNVCSO:{  type: String},
+  ClinVar_VCF_CLNVI:{  type: String},
+  ClinVar_VCF_DBVARID:{  type: String},
+  ClinVar_VCF_GENEINFO:{  type: String},
+  ClinVar_VCF_MC:{  type: String},
+  ClinVar_VCF_ORIGIN:{  type: String},
+  ClinVar_VCF_RS:{  type: String},
+  ClinVar_VCF_ID:{  type: String},
+  ClinVar_VCF_FILTER:{  type: String},
+  CosmicFusion_fusion_id:{  type: String},
+  Familial_Cancer_Genes_Synonym:{  type: String},
+  Familial_Cancer_Genes_Reference:{  type: String},
+  Gencode_XHGNC_hgnc_id:{  type: String},
+  HGNC_HGNC_ID:{  type: String},
+  HGNC_Approved_name:{  type: String},
+  HGNC_Status:{  type: String},
+  HGNC_Locus_type:{  type: String},
+  HGNC_Locus_group:{  type: String},
+  HGNC_Previous_symbols:{  type: String},
+  HGNC_Previous_name:{  type: String},
+  HGNC_Alias_symbols:{  type: String},
+  HGNC_Alias_names:{  type: String},
+  HGNC_Chromosome:{  type: String},
+  HGNC_Date_modified:{  type: String},
+  HGNC_Date_symbol_changed:{  type: String},
+  HGNC_Date_name_changed:{  type: String},
+  HGNC_Accession_numbers:{  type: String},
+  HGNC_Enzyme_IDs:{  type: String},
+  HGNC_NCBI_Gene_ID:{  type: String},
+  HGNC_Ensembl_gene_ID:{  type: String},
+  HGNC_Pubmed_IDs:{  type: String},
+  HGNC_RefSeq_IDs:{  type: String},
+  HGNC_Gene_group_ID:{  type: String},
+  HGNC_Gene_group_name:{  type: String},
+  HGNC_CCDS_IDs:{  type: String},
+  HGNC_Vega_IDs:{  type: String},
+  HGNC_NCBI_Gene_ID_supplied_by_NCBI:{  type: String},
+  HGNC_OMIM_ID_supplied_by_OMIM:{  type: String},
+  HGNC_RefSeq_supplied_by_NCBI:{  type: String},
+  HGNC_UniProt_ID_supplied_by_UniProt:{  type: String},
+  HGNC_Ensembl_ID_supplied_by_Ensembl:{  type: String},
+  HGNC_UCSC_ID_supplied_by_UCSC:{  type: String},
+  Oreganno_Build:{  type: String},
+  Simple_Uniprot_alt_uniprot_accessions:{  type: String},
+  dbSNP_ASP:{  type: String},
+  dbSNP_ASS:{  type: String},
+  dbSNP_CAF:{  type: String},
+  dbSNP_CDA:{  type: String},
+  dbSNP_CFL:{  type: String},
+  dbSNP_COMMON:{  type: String},
+  dbSNP_DSS:{  type: String},
+  dbSNP_G5:{  type: String},
+  dbSNP_G5A:{  type: String},
+  dbSNP_GENEINFO:{  type: String},
+  dbSNP_GNO:{  type: String},
+  dbSNP_HD:{  type: String},
+  dbSNP_INT:{  type: String},
+  dbSNP_KGPhase1:{  type: String},
+  dbSNP_KGPhase3:{  type: String},
+  dbSNP_LSD:{  type: String},
+  dbSNP_MTP:{  type: String},
+  dbSNP_MUT:{  type: String},
+  dbSNP_NOC:{  type: String},
+  dbSNP_NOV:{  type: String},
+  dbSNP_NSF:{  type: String},
+  dbSNP_NSM:{  type: String},
+  dbSNP_NSN:{  type: String},
+  dbSNP_OM:{  type: String},
+  dbSNP_OTH:{  type: String},
+  dbSNP_PM:{  type: String},
+  dbSNP_PMC:{  type: String},
+  dbSNP_R3:{  type: String},
+  dbSNP_R5:{  type: String},
+  dbSNP_REF:{  type: String},
+  dbSNP_RV:{  type: String},
+  dbSNP_S3D:{  type: String},
+  dbSNP_SAO:{  type: String},
+  dbSNP_SLO:{  type: String},
+  dbSNP_SSR:{  type: String},
+  dbSNP_SYN:{  type: String},
+  dbSNP_TOPMED:{  type: String},
+  dbSNP_TPA:{  type: String},
+  dbSNP_U3:{  type: String},
+  dbSNP_U5:{  type: String},
+  dbSNP_VC:{  type: String},
+  dbSNP_VP:{  type: String},
+  dbSNP_WGT:{  type: String},
+  dbSNP_WTD:{  type: String},
+  dbSNP_dbSNPBuildID:{  type: String},
+  dbSNP_ID:{  type: String},
+  dbSNP_FILTER:{  type: String},
+  dbSNP_RSPOS:{  type: String},
+  dbSNP_VLD:{  type: String},
+  AS_FilterStatus:{  type: String},
+  AS_SB_TABLE:{  type: String},
+  AS_UNIQ_ALT_READ_COUNT:{  type: String},
+  CONTQ:{  type: String},
+  DP:{  type: String},
+  ECNT:{  type: String},
+  GERMQ:{  type: String},
+  MBQ:{  type: String},
+  MFRL:{  type: String},
+  MMQ:{  type: String},
+  MPOS:{  type: String},
+  NALOD:{  type: String},
+  NCount:{  type: String},
+  NLOD:{  type: String},
+  OCM:{  type: String},
+  PON:{  type: String},
+  POPAF:{  type: String},
+  ROQ:{  type: String},
+  RPA:{  type: String},
+  RU:{  type: String},
+  SEQQ:{  type: String},
+  STR:{  type: String},
+  STRANDQ:{  type: String},
+  STRQ:{  type: String},
+  TLOD:{  type: String},
 }
 @Component({
   selector: 'app-dashboard',
@@ -232,297 +231,301 @@ export interface PeriodicElement {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  userFilter:any={serial:''};
-    users:any = [];
-    p:any;
-    displayedColumns: string[] = [
-      'serial',
-      'hugo_Symbol',
-      'entrez_Gene_Id',
-      'center',
-      'nCBI_Build',
-      'chromosome',
-      'start_Position',
-      'end_Position',
-      'strand',
-      'variant_Classification',
-      'variant_Type',
-      'reference_Allele',
-      'tumor_Seq_Allele1',
-      'tumor_Seq_Allele2',
-      'dbSNP_RS',
-      'dbSNP_Val_Status',
-      'tumor_Sample_Barcode',
-      'matched_Norm_Sample_Barcode',
-      'match_Norm_Seq_Allele1',
-      'match_Norm_Seq_Allele2',
-      'tumor_Validation_Allele1',
-      'tumor_Validation_Allele2',
-      'match_Norm_Validation_Allele1',
-      'match_Norm_Validation_Allele2',
-      'verification_Status',
-      'validation_Status',
-      'mutation_Status',
-      'sequencing_Phase',
-      'sequence_Source',
-      'validation_Method',
-      'score',
-      'bAM_File',
-      'sequencer',
-      'tumor_Sample_UUID',
-      'matched_Norm_Sample_UUID',
-      'genome_Change',
-      'annotation_Transcript',
-      'transcript_Strand',
-      'transcript_Exon',
-      'transcript_Position',
-      'cDNA_Change',
-      'codon_Change',
-      'protein_Change',
-      'other_Transcripts',
-      'refseq_mRNA_Id',
-      'refseq_prot_Id',
-      'swissProt_acc_Id',
-      'swissProt_entry_Id',
-      'description',
-      'uniProt_AApos',
-      'uniProt_Region',
-      'uniProt_Site',
-      'uniProt_Natural_Variations',
-      'uniProt_Experimental_Info',
-      'gO_Biological_Process',
-      'gO_Cellular_Component',
-      'gO_Molecular_Function',
-      'cOSMIC_overlapping_mutations',
-      'cOSMIC_fusion_genes',
-      'cOSMIC_tissue_types_affected',
-      'cOSMIC_total_alterations_in_gene',
-      'tumorscape_Amplification_Peaks',
-      'tumorscape_Deletion_Peaks',
-      'tCGAscape_Amplification_Peaks',
-      'tCGAscape_Deletion_Peaks',
-      'drugBank',
-      'ref_context',
-      'gc_content',
-      'cCLE_ONCOMAP_overlapping_mutations',
-      'cCLE_ONCOMAP_total_mutations_in_gene',
-      'cGC_Mutation_Type',
-      'cGC_Translocation_Partner',
-      'cGC_Tumor_Types_Somatic',
-      'cGC_Tumor_Types_Germline',
-      'cGC_Other_Diseases',
-      'dNARepairGenes_Activity_linked_to_OMIM',
-      'familialCancerDatabase_Syndromes',
-      'mUTSIG_Published_Results',
-      'oREGANNO_ID',
-      'oREGANNO_Values',
-      'tumor_f',
-      't_alt_count',
-      't_ref_count',
-      'n_alt_count',
-      'n_ref_count',
-      'gencode_43_secondaryVariantClassification',
-      'achilles_Top_Genes',
-      'clinVar_VCF_AF_ESP',
-      'clinVar_VCF_AF_EXAC',
-      'clinVar_VCF_AF_TGP',
-      'clinVar_VCF_ALLELEID',
-      'clinVar_VCF_CLNDISDB',
-      'clinVar_VCF_CLNDISDBINCL',
-      'clinVar_VCF_CLNDNL',
-      'clinVar_VCF_CLNDNINCL',
-      'clinVar_VCF_CLNHGVS',
-      'clinVar_VCF_CLNREVSTAT',
-      'clinVar_VCF_CLNSIG',
-      'clinVar_VCF_CLNSIGCONF',
-      'clinVar_VCF_CLNSIGINCL',
-      'clinVar_VCF_CLNVC',
-      'clinVar_VCF_CLNVCSO',
-      'clinVar_VCF_CLNVI',
-      'clinVar_VCF_DBVARID',
-      'clinVar_VCF_GENEINFO',
-      'clinVar_VCF_MC',
-      'clinVar_VCF_ORIGIN',
-      'clinVar_VCF_RS',
-      'clinVar_VCF_ID',
-      'clinVar_VCF_FILTER',
-      'cosmicFusion_fusion_id',
-      'familial_Cancer_Genes_Synonym',
-      'familial_Cancer_Genes_Reference',
-      'gencode_XHGNC_hgnc_id',
-      'hGNC_HGNC_ID',
-      'hGNC_Approved_name',
-      'hGNC_Status',
-      'hGNC_Locus_type',
-      'hGNC_Locus_group',
-      'hGNC_Previous_symbols',
-      'hGNC_Previous_name',
-      'hGNC_Alias_symbols',
-      'hGNC_Alias_names',
-      'hGNC_Chromosome',
-      'hGNC_Date_modified',
-      'hGNC_Date_symbol_changed',
-      'hGNC_Date_name_changed',
-      'hGNC_Accession_numbers',
-      'hGNC_Enzyme_IDs',
-      'hGNC_NCBI_Gene_ID',
-      'hGNC_Ensembl_gene_ID',
-      'hGNC_Pubmed_IDs',
-      'hGNC_RefSeq_IDs',
-      'hGNC_Gene_group_ID',
-      'hGNC_Gene_group_name',
-      'hGNC_CCDS_IDs',
-      'hGNC_Vega_IDs',
-      'hGNC_NCBI_Gene_ID_supplied_by_NCBI',
-      'hGNC_OMIM_ID_supplied_by_OMIM',
-      'hGNC_RefSeq_supplied_by_NCBI',
-      'hGNC_UniProt_ID_supplied_by_UniProt',
-      'hGNC_Ensembl_ID_supplied_by_Ensembl',
-      'hGNC_UCSC_ID_supplied_by_UCSC',
-      'oreganno_Build',
-      'simple_Uniprot_alt_uniprot_accessions',
-      'dbSNP_ASP',
-      'dbSNP_ASS',
-      'dbSNP_CAF',
-      'dbSNP_CDA',
-      'dbSNP_CFL',
-      'dbSNP_COMMON',
-      'dbSNP_DSS',
-      'dbSNP_G5',
-      'dbSNP_G5A',
-      'dbSNP_GENEINFO',
-      'dbSNP_GNO',
-      'dbSNP_HD',
-      'dbSNP_INT',
-      'dbSNP_KGPhase1',
-      'dbSNP_KGPhase3',
-      'dbSNP_LSD',
-      'dbSNP_MTP',
-      'dbSNP_MUT',
-      'dbSNP_NOC',
-      'dbSNP_NOV',
-      'dbSNP_NSF',
-      'dbSNP_NSM',
-      'dbSNP_NSN',
-      'dbSNP_OM',
-      'dbSNP_OTH',
-      'dbSNP_PM',
-      'dbSNP_PMC',
-      'dbSNP_R3',
-      'dbSNP_R5',
-      'dbSNP_REF',
-      'dbSNP_RV',
-      'dbSNP_S3D',
-      'dbSNP_SAO',
-      'dbSNP_SLO',
-      'dbSNP_SSR',
-      'dbSNP_SYN',
-      'dbSNP_TOPMED',
-      'dbSNP_TPA',
-      'dbSNP_U3',
-      'dbSNP_U5',
-      'dbSNP_VC',
-      'dbSNP_VP',
-      'dbSNP_WGT',
-      'dbSNP_WTD',
-      'dbSNP_dbSNPBuildID',
-      'dbSNP_ID',
-      'dbSNP_FILTER',
-      'dbSNP_RSPOS',
-      'dbSNP_VLD',
-      'aS_FilterStatus',
-      'aS_SB_TABLE',
-      'aS_UNIQ_ALT_READ_COUNT',
-      'cONTQ',
-      'dP',
-      'eCNT',
-      'gERMQ',
-      'mBQ',
-      'mFRL',
-      'mMQ',
-      'mPOS',
-      'nALOD',
-      'nCount',
-      'nLOD',
-      'oCM',
-      'pON',
-      'pOPAF',
-      'rOQ',
-      'rPA',
-      'rU',
-      'sEQQ',
-      'sTR',
-      'sTRANDQ',
-      'sTRQ',
-      'tLOD',
-    ]
-    dataSource :any;
-  
-    constructor(
-      public dialog: MatDialog,
-      private apiService: ApiService,
-      private router: Router,
-      private _auth: AuthService,
-    ) { }
-  
-    ngOnInit(): void {
-      this.getUsers();
-    }
-  
-    getUsers() {
-      this.apiService.getUsers().subscribe(
-        (res: any) => {
-          if (res.status == 200) {
-  
-            const ELEMENT_DATA: PeriodicElement[] = res.data;
-            this.dataSource = ELEMENT_DATA;
-  
-          } else {
-            alert("Something Went Wrong");
-          }
-        },
-      
-      );
-    }
-  
-    importUser() {
-  
-      const dialogRef = this.dialog.open(ImportUserComponent, {
-        minWidth: '300px',
-        minHeight: '300px',
-        data: {},
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (result != undefined) {
-          alert(result.msg);
-          this.getUsers();
-        }
-      });
-    }
-    exportUser() {
-      this.apiService.exportUser().subscribe(
-        (res: any) => {
-          if(res.status == 200){
-              const a = document.createElement("a");
-              a.href = "data:text/csv," + res.body;
-              let filename = "users";
-              a.setAttribute("download", filename + ".csv");
-              document.body.appendChild(a);
-              a.click();
-              document.body.removeChild(a);
-          }
-          else{
-            alert("Something went Wrong")
-          }
-        },
-       
-      );
-    }
+  userFilter: any = { Serial: '' };
+  users: any = [];
+  p: any;
+  displayedColumns: String[] = [
+    'Serial',
+    'Hugo_Symbol',
+    'Entrez_Gene_Id',
+    'Center',
+    'NCBI_Build',
+    'Chromosome',
+    'Start_Position',
+    'End_Position',
+    'Strand',
+    'Variant_Classification',
+    'Variant_Type',
+    'Reference_Allele',
+    'Tumor_Seq_Allele1',
+    'Tumor_Seq_Allele2',
+    'dbSNP_RS',
+    'dbSNP_Val_Status',
+    'Tumor_Sample_Barcode',
+    'Matched_Norm_Sample_Barcode',
+    'Match_Norm_Seq_Allele1',
+    'Match_Norm_Seq_Allele2',
+    'Tumor_Validation_Allele1',
+    'Tumor_Validation_Allele2',
+    'Match_Norm_Validation_Allele1',
+    'Match_Norm_Validation_Allele2',
+    'Verification_Status',
+    'Validation_Status',
+    'Mutation_Status',
+    'Sequencing_Phase',
+    'Sequence_Source',
+    'Validation_Method',
+    'Score',
+    'BAM_File',
+    'Sequencer',
+    'Tumor_Sample_UUID',
+    'Matched_Norm_Sample_UUID',
+    'Genome_Change',
+    'Annotation_Transcript',
+    'Transcript_Strand',
+    'Transcript_Exon',
+    'Transcript_Position',
+    'cDNA_Change',
+    'Codon_Change',
+    'Protein_Change',
+    'Other_Transcripts',
+    'Refseq_mRNA_Id',
+    'Refseq_prot_Id',
+    'SwissProt_acc_Id',
+    'SwissProt_entry_Id',
+    'Description',
+    'UniProt_AApos',
+    'UniProt_Region',
+    'UniProt_Site',
+    'UniProt_Natural_Variations',
+    'UniProt_Experimental_Info',
+    'GO_Biological_Process',
+    'GO_Cellular_Component',
+    'GO_Molecular_Function',
+    'COSMIC_overlapping_mutations',
+    'COSMIC_fusion_genes',
+    'COSMIC_tissue_types_affected',
+    'COSMIC_total_alterations_in_gene',
+    'Tumorscape_Amplification_Peaks',
+    'Tumorscape_Deletion_Peaks',
+    'TCGAscape_Amplification_Peaks',
+    'TCGAscape_Deletion_Peaks',
+    'DrugBank',
+    'ref_context',
+    'gc_content',
+    'CCLE_ONCOMAP_overlapping_mutations',
+    'CCLE_ONCOMAP_total_mutations_in_gene',
+    'CGC_Mutation_Type',
+    'CGC_Translocation_Partner',
+    'CGC_Tumor_Types_Somatic',
+    'CGC_Tumor_Types_Germline',
+    'CGC_Other_Diseases',
+    'DNARepairGenes_Activity_linked_to_OMIM',
+    'FamilialCancerDatabase_Syndromes',
+    'MUTSIG_Published_Results',
+    'OREGANNO_ID',
+    'OREGANNO_Values',
+    'tumor_f',
+    't_alt_count',
+    't_ref_count',
+    'n_alt_count',
+    'n_ref_count',
+    'Gencode_43_secondaryVariantClassification',
+    'Achilles_Top_Genes',
+    'ClinVar_VCF_AF_ESP',
+    'ClinVar_VCF_AF_EXAC',
+    'ClinVar_VCF_AF_TGP',
+    'ClinVar_VCF_ALLELEID',
+    'ClinVar_VCF_CLNDISDB',
+    'ClinVar_VCF_CLNDISDBINCL',
+    'ClinVar_VCF_CLNDN',
+    'ClinVar_VCF_CLNDNINCL',
+    'ClinVar_VCF_CLNHGVS',
+    'ClinVar_VCF_CLNREVSTAT',
+    'ClinVar_VCF_CLNSIG',
+    'ClinVar_VCF_CLNSIGCONF',
+    'ClinVar_VCF_CLNSIGINCL',
+    'ClinVar_VCF_CLNVC',
+    'ClinVar_VCF_CLNVCSO',
+    'ClinVar_VCF_CLNVI',
+    'ClinVar_VCF_DBVARID',
+    'ClinVar_VCF_GENEINFO',
+    'ClinVar_VCF_MC',
+    'ClinVar_VCF_ORIGIN',
+    'ClinVar_VCF_RS',
+    'ClinVar_VCF_ID',
+    'ClinVar_VCF_FILTER',
+    'CosmicFusion_fusion_id',
+    'Familial_Cancer_Genes_Synonym',
+    'Familial_Cancer_Genes_Reference',
+    'Gencode_XHGNC_hgnc_id',
+    'HGNC_HGNC_ID',
+    'HGNC_Approved_name',
+    'HGNC_Status',
+    'HGNC_Locus_type',
+    'HGNC_Locus_group',
+    'HGNC_Previous_symbols',
+    'HGNC_Previous_name',
+    'HGNC_Alias_symbols',
+    'HGNC_Alias_names',
+    'HGNC_Chromosome',
+    'HGNC_Date_modified',
+    'HGNC_Date_symbol_changed',
+    'HGNC_Date_name_changed',
+    'HGNC_Accession_numbers',
+    'HGNC_Enzyme_IDs',
+    'HGNC_NCBI_Gene_ID',
+    'HGNC_Ensembl_gene_ID',
+    'HGNC_Pubmed_IDs',
+    'HGNC_RefSeq_IDs',
+    'HGNC_Gene_group_ID',
+    'HGNC_Gene_group_name',
+    'HGNC_CCDS_IDs',
+    'HGNC_Vega_IDs',
+    'HGNC_NCBI_Gene_ID_supplied_by_NCBI',
+    'HGNC_OMIM_ID_supplied_by_OMIM',
+    'HGNC_RefSeq_supplied_by_NCBI',
+    'HGNC_UniProt_ID_supplied_by_UniProt',
+    'HGNC_Ensembl_ID_supplied_by_Ensembl',
+    'HGNC_UCSC_ID_supplied_by_UCSC',
+    'Oreganno_Build',
+    'Simple_Uniprot_alt_uniprot_accessions',
+    'dbSNP_ASP',
+    'dbSNP_ASS',
+    'dbSNP_CAF',
+    'dbSNP_CDA',
+    'dbSNP_CFL',
+    'dbSNP_COMMON',
+    'dbSNP_DSS',
+    'dbSNP_G5',
+    'dbSNP_G5A',
+    'dbSNP_GENEINFO',
+    'dbSNP_GNO',
+    'dbSNP_HD',
+    'dbSNP_INT',
+    'dbSNP_KGPhase1',
+    'dbSNP_KGPhase3',
+    'dbSNP_LSD',
+    'dbSNP_MTP',
+    'dbSNP_MUT',
+    'dbSNP_NOC',
+    'dbSNP_NOV',
+    'dbSNP_NSF',
+    'dbSNP_NSM',
+    'dbSNP_NSN',
+    'dbSNP_OM',
+    'dbSNP_OTH',
+    'dbSNP_PM',
+    'dbSNP_PMC',
+    'dbSNP_R3',
+    'dbSNP_R5',
+    'dbSNP_REF',
+    'dbSNP_RV',
+    'dbSNP_S3D',
+    'dbSNP_SAO',
+    'dbSNP_SLO',
+    'dbSNP_SSR',
+    'dbSNP_SYN',
+    'dbSNP_TOPMED',
+    'dbSNP_TPA',
+    'dbSNP_U3',
+    'dbSNP_U5',
+    'dbSNP_VC',
+    'dbSNP_VP',
+    'dbSNP_WGT',
+    'dbSNP_WTD',
+    'dbSNP_dbSNPBuildID',
+    'dbSNP_ID',
+    'dbSNP_FILTER',
+    'dbSNP_RSPOS',
+    'dbSNP_VLD',
+    'AS_FilterStatus',
+    'AS_SB_TABLE',
+    'AS_UNIQ_ALT_READ_COUNT',
+    'CONTQ',
+    'DP',
+    'ECNT',
+    'GERMQ',
+    'MBQ',
+    'MFRL',
+    'MMQ',
+    'MPOS',
+    'NALOD',
+    'NCount',
+    'NLOD',
+    'OCM',
+    'PON',
+    'POPAF',
+    'ROQ',
+    'RPA',
+    'RU',
+    'SEQQ',
+    'STR',
+    'STRANDQ',
+    'STRQ',
+    'TLOD',
+  ];
+  dataSource: any;
 
-  
-   
+  constructor(
+    public dialog: MatDialog,
+    private apiService: ApiService,
+    private router: Router,
+    private _auth: AuthService,
+  ) { }
+
+  ngOnInit(): void {
+    this.getUsers();
   }
-  
+
+  getUsers() {
+    this.apiService.getUsers().subscribe(
+      (res: any) => {
+        if (res.status == 200) {
+
+          const ELEMENT_DATA: PeriodicElement[] = res.data;
+          this.dataSource = ELEMENT_DATA;
+
+        } else {
+          alert("Something Went Wrong");
+        }
+      },
+
+    );
+  }
+
+  importUser() {
+
+    const dialogRef = this.dialog.open(ImportUserComponent, {
+      minWidth: '300px',
+      minHeight: '300px',
+      data: {},
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != undefined) {
+        alert(result.msg);
+        this.getUsers();
+      }
+    });
+  }
+  exportUser() {
+    this.apiService.exportUser().subscribe(
+      (res: any) => {
+        if (res.status == 200) {
+          const a = document.createElement("a");
+          a.href = "data:text/csv," + res.body;
+          let filename = "users";
+          a.setAttribute("download", filename + ".csv");
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+        else {
+          alert("Something went Wrong")
+        }
+      },
+
+    );
+  }
+
+
+
+}
+
+
+
+
+
   
   
 
